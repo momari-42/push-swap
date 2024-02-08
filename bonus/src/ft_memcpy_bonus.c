@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2023/11/01 09:05:29 by momari            #+#    #+#             */
+/*   Updated: 2024/01/30 08:25:03 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_stack	*current;
+	size_t	i;
 
-	if (!lst)
-		return ;
-	current = lst;
-	while (current)
+	if (dst == src)
+		return (dst);
+	i = 0;
+	while (n--)
 	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
-		current = current->next;
+		*((unsigned char *)(dst + i)) = *((unsigned char *)(src + i));
+		i++;
 	}
+	return (dst);
 }

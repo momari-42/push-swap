@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2023/11/08 18:25:25 by momari            #+#    #+#             */
+/*   Updated: 2024/01/30 08:24:57 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+int	ft_lstsize(t_stack *lst)
 {
-	t_stack	*current;
+	int	count;
 
-	if (!lst)
-		return ;
-	current = lst;
-	while (current)
+	count = 0;
+	while (lst)
 	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
-		current = current->next;
+		count++;
+		lst = lst->next;
 	}
+	return (count);
 }

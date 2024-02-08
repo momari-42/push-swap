@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strdup_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2023/11/03 08:24:18 by momari            #+#    #+#             */
+/*   Updated: 2024/01/30 08:25:23 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+char	*ft_strdup(const char *s1)
 {
-	t_stack	*current;
+	char	*ptr;
+	int		s1_len;
 
-	if (!lst)
-		return ;
-	current = lst;
-	while (current)
-	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
-		current = current->next;
-	}
+	s1_len = ft_strlen(s1);
+	ptr = (char *)malloc(s1_len + 1 * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	ft_memcpy(ptr, s1, s1_len);
+	ptr[s1_len] = '\0';
+	return (ptr);
 }

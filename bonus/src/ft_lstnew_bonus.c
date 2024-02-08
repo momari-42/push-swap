@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2023/11/08 12:43:56 by momari            #+#    #+#             */
+/*   Updated: 2024/02/02 13:07:26 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+t_stack	*ft_lstnew(int content)
 {
-	t_stack	*current;
+	t_stack	*newnode;
 
-	if (!lst)
-		return ;
-	current = lst;
-	while (current)
-	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
-		current = current->next;
-	}
+	newnode = (t_stack *)malloc(sizeof(t_stack));
+	if (newnode == NULL)
+		return (NULL);
+	newnode->content = content;
+	newnode->index = -1;
+	newnode->next = NULL;
+	return (newnode);
 }

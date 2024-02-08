@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:34:43 by momari            #+#    #+#             */
-/*   Updated: 2024/02/01 22:21:49 by momari           ###   ########.fr       */
+/*   Created: 2024/01/30 05:14:59 by momari            #+#    #+#             */
+/*   Updated: 2024/02/02 15:00:37 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	main(int ac, char **av)
 {
+	char	*str;
 	t_stack	*a;
 	t_stack	*b;
+	t_instraction *in;
+	t_instraction *tmp;
 
-	if (ac >= 2)
+	in = NULL;
+	if (ac > 1)
 	{
 		ft_fillstack(av, ac, &a);
-		if (ft_is_sorted(a) == 1)
-			exit (0);
-		ft_indexstack(&a);
-		if (ft_lstsize(a) == 5)
-			ft_sort_005(&a, &b);
-		else
-			ft_sort_algo(&a, &b);
-		ft_lstclear(&a);
+		str = get_next_line(0);
+		while (str)
+		{
+			ft_lstadd_back_in(&in, ft_lstnew_in(str));
+			free(str);
+			str = get_next_line(0);
+		}
+		if (str)
+			free(str);
+		tmp = in;
+		while (tmp)
+		{
+			ft_chech_action(&a, &b, tmp->content);
+			tmp = tmp->next;
+		}
+		ft_lstclear_in(&in);
+		if (ft_is_sorted(a) == -1)
+			ft_print_message(-1);
+		ft_print_message(1);
 	}
-	return (0);
 }

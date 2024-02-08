@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2023/11/09 08:25:55 by momari            #+#    #+#             */
+/*   Updated: 2024/01/30 08:24:30 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*current;
 
-	if (!lst)
+	if (lst == NULL || new == NULL)
 		return ;
-	current = lst;
-	while (current)
+	if (*lst == NULL)
 	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
+		*lst = new;
+		return ;
+	}
+	current = *lst;
+	while (current->next != NULL)
+	{
 		current = current->next;
 	}
+	current->next = new;
 }

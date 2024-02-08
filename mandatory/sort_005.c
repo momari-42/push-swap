@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   sort_005.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:01:01 by momari            #+#    #+#             */
-/*   Updated: 2024/01/23 21:32:33 by momari           ###   ########.fr       */
+/*   Created: 2024/01/30 02:20:32 by momari            #+#    #+#             */
+/*   Updated: 2024/02/01 22:14:19 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../push_swap.h"
 
-void	ft_lstiter(t_stack *lst, int data, int size)
+void	ft_sort_005(t_stack **a, t_stack **b)
 {
-	t_stack	*current;
-
-	if (!lst)
-		return ;
-	current = lst;
-	while (current)
+	while (ft_lstsize(*a) > 3)
 	{
-		if (current->content == data)
-		{
-			current->index = size;
-			return ;
-		}
-		current = current->next;
+		if ((*a)->index < 2)
+			push(a, b, 'b');
+		else
+			rotat(a, 'a');
 	}
+	ft_sort_003(a);
+	if ((*b)->index == 0)
+		rotat(b, 'b');
+	push(b, a, 'a');
+	push(b, a, 'a');
 }
