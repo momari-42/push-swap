@@ -6,7 +6,7 @@
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:09:12 by momari            #+#    #+#             */
-/*   Updated: 2024/01/30 10:49:35 by momari           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:57:21 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,17 @@
 
 void	ft_flip_b_to_a(t_stack **a, t_stack **b)
 {
-	int	tmp;
 	int	index;
 	int	last_index_a;
 	int	last_index_b;
 
 	while (ft_lstsize(*b) > 0)
 	{
-		tmp = (*a)->index - 1;
-		index = ft_return_index(*b, tmp);
+		index = ft_return_index(*b, (*a)->index - 1);
 		last_index_a = ft_index_of_last(*a);
 		last_index_b = ft_index_of_last(*b);
-		if (((*a)->index - 1) == (*b)->index)
-			push(b, a, 'a');
-		else if (((*a)->index - 1) == last_index_b)
-		{
-			reverse_rotate(b, 'b');
-			push(b, a, 'a');
-		}
-		else if (last_index_a == ft_findmax(*a))
-		{
-			push(b, a, 'a');
-			rotat(a, 'a');
-		}
-		else if (last_index_a < (*b)->index)
-		{
-			push(b, a, 'a');
-			rotat(a, 'a');
-		}
+		if (ft_check_if(a, b, last_index_a, last_index_b) == 1)
+			;
 		else if (last_index_a < last_index_b)
 		{
 			reverse_rotate(b, 'b');

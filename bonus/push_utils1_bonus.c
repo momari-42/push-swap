@@ -6,7 +6,7 @@
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 05:39:50 by momari            #+#    #+#             */
-/*   Updated: 2024/02/02 14:58:07 by momari           ###   ########.fr       */
+/*   Updated: 2024/02/17 07:59:01 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_is_sorted(t_stack *stack)
 	int		tmp;
 	t_stack	*current;
 
+	if (ft_lstsize(stack) <= 1)
+		return (1);
 	current = stack;
 	tmp = current->content;
 	current = current->next;
@@ -33,15 +35,10 @@ int	ft_is_sorted(t_stack *stack)
 void	ft_print_message(int n)
 {
 	if (n == -1)
-	{
 		ft_putendl_fd("KO", 1);
-		exit(1);
-	}
 	else
-	{
 		ft_putendl_fd("OK", 1);
-		exit(0);
-	}
+	exit(0);
 }
 
 void	ft_print_error(void)

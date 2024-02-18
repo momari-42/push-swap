@@ -6,7 +6,7 @@
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 01:54:07 by momari            #+#    #+#             */
-/*   Updated: 2024/02/04 14:34:40 by momari           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:26:00 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	ft_sort_algo(t_stack **a, t_stack **b)
 {
-	int	last_p;
 	int	pivot1;
 	int	pivot2;
 
 	pivot2 = 0;
-	last_p = -1;
 	while (ft_lstsize(*a) > 3)
 	{
 		pivot1 = (ft_lstsize(*a) / 6) + pivot2;
@@ -27,16 +25,15 @@ void	ft_sort_algo(t_stack **a, t_stack **b)
 		while (ft_lstsize(*b) < pivot2)
 		{
 			if (*b && (*a)->index >= pivot2
-				&& (*b)->index >= last_p && (*b)->index < pivot1)
+				&& (*b)->index < pivot1)
 				rotat_ab(a, b);
-			else if (*b && (*b)->index >= last_p && (*b)->index < pivot1)
+			else if (*b && (*b)->index < pivot1)
 				rotat(b, 'b');
 			if ((*a)->index >= pivot2)
 				rotat(a, 'a');
 			else if ((*a)->index < pivot2)
 				push(a, b, 'b');
 		}
-		last_p = pivot1;
 	}
 	ft_sort_003(a);
 	ft_flip_b_to_a(a, b);
@@ -71,4 +68,26 @@ void	reverse_rotate_ab(t_stack **a, t_stack **b)
 	reverse_rotate(a, 's');
 	reverse_rotate(b, 's');
 	ft_putendl_fd("rrr", 1);
+}
+
+int	ft_check_if(t_stack **a, t_stack **b, int last_a, int last_b)
+{
+	if (((*a)->index - 1) == (*b)->index)
+	{
+		push(b, a, 'a');
+		return (1);
+	}
+	else if (((*a)->index - 1) == last_b)
+	{
+		reverse_rotate(b, 'b');
+		push(b, a, 'a');
+		return (1);
+	}
+	else if (last_a == ft_findmax(*a) || last_a < (*b)->index)
+	{
+		push(b, a, 'a');
+		rotat(a, 'a');
+		return (1);
+	}
+	return (0);
 }

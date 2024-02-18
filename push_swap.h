@@ -6,14 +6,13 @@
 /*   By: momari <momari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:35:00 by momari            #+#    #+#             */
-/*   Updated: 2024/01/30 10:48:20 by momari           ###   ########.fr       */
+/*   Updated: 2024/02/17 16:22:29 by momari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
@@ -31,6 +30,7 @@ int		ft_return_index(t_stack *stack, int index);
 int		ft_index_of_last(t_stack *stack);
 int		ft_findmax(t_stack *a);
 int		ft_is_sorted(t_stack *stack);
+int		ft_check_if(t_stack **a, t_stack **b, int last_a, int last_b);
 long	ft_atoi(const char *str);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
